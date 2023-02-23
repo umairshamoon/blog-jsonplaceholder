@@ -89,28 +89,40 @@ const Blog = () => {
         </IconButton>
       </Grid>
       {isLoading ? (
-        <Grid item xs={12} spacing={3}>
-          <Grid container justify='center' spacing={5}>
-            {filteredPosts.map((post) => (
-              <Card sx={{ maxWidth: 350, margin: 10 }}>
-                <CardContent key={post.id}>
-                  <Typography variant='h5'>{post.title}</Typography>
-                  <Typography color='text.secondary'>{post.body}</Typography>
-                </CardContent>
-              </Card>
-            ))}
+        filteredPosts.length > 0 ? (
+          <Grid item xs={12} spacing={3}>
+            <Grid container justify='center' spacing={5}>
+              {filteredPosts.map((post) => (
+                <Card sx={{ maxWidth: 350, margin: 10 }}>
+                  <CardContent key={post.id}>
+                    <Typography variant='h5'>{post.title}</Typography>
+                    <Typography color='text.secondary'>{post.body}</Typography>
+                  </CardContent>
+                </Card>
+              ))}
+            </Grid>
+            <Stack spacing={3} style={{ marginTop: '3rem' }}>
+              <Pagination
+                count={10}
+                page={pageNumber}
+                onChange={handlePageChange}
+                shape='rounded'
+                showFirstButton
+                showLastButton
+              />
+            </Stack>
           </Grid>
-          <Stack spacing={3} style={{ marginTop: '3rem' }}>
-            <Pagination
-              count={10}
-              page={pageNumber}
-              onChange={handlePageChange}
-              shape='rounded'
-              showFirstButton
-              showLastButton
-            />
-          </Stack>
-        </Grid>
+        ) : (
+          <Typography
+            variant='h3'
+            sx={{
+              marginX: '40%',
+              marginTop: 10,
+            }}
+          >
+            No Match
+          </Typography>
+        )
       ) : (
         <LoaderComponent />
       )}
