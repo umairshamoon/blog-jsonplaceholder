@@ -12,6 +12,8 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import { KeyboardDoubleArrowDown, KeyboardDoubleArrowUp } from '@mui/icons-material'
+
 import LoaderComponent from '../components/Loader'
 
 const Blog = () => {
@@ -79,7 +81,11 @@ const Blog = () => {
       >
         <Typography sx={{ marginRight: 3 }}>SORT</Typography>
         <IconButton onClick={() => handleSort('title')}>
-          {sortType === 'asc' ? 'asc' : 'des'}
+          {sortType === 'asc' ? (
+            <KeyboardDoubleArrowUp />
+          ) : (
+            <KeyboardDoubleArrowDown />
+          )}
         </IconButton>
       </Grid>
       {isLoading ? (
