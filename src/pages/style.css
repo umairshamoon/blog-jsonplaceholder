@@ -1,0 +1,14 @@
+.icon {
+  color: black;
+  background: rgb(199, 189, 189);
+  border-radius: 50%;
+}
+.no-match {
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: rgba(197, 196, 196, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 250px;
+}

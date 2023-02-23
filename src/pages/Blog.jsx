@@ -15,6 +15,7 @@ import {
 import { KeyboardDoubleArrowDown, KeyboardDoubleArrowUp } from '@mui/icons-material'
 
 import LoaderComponent from '../components/Loader'
+import './style.css'
 
 const Blog = () => {
   const [pageNumber, setPageNumber] = useState(1)
@@ -82,9 +83,9 @@ const Blog = () => {
         <Typography sx={{ marginRight: 3 }}>SORT</Typography>
         <IconButton onClick={() => handleSort('title')}>
           {sortType === 'asc' ? (
-            <KeyboardDoubleArrowUp />
+            <KeyboardDoubleArrowUp className='icon' />
           ) : (
-            <KeyboardDoubleArrowDown />
+            <KeyboardDoubleArrowDown className='icon' />
           )}
         </IconButton>
       </Grid>
@@ -93,7 +94,7 @@ const Blog = () => {
           <Grid item xs={12} spacing={3}>
             <Grid container justify='center' spacing={5}>
               {filteredPosts.map((post) => (
-                <Card sx={{ maxWidth: 350, margin: 10 }}>
+                <Card key={post.id} sx={{ maxWidth: 350, margin: 10 }}>
                   <CardContent key={post.id}>
                     <Typography variant='h5'>{post.title}</Typography>
                     <Typography color='text.secondary'>{post.body}</Typography>
@@ -115,10 +116,11 @@ const Blog = () => {
         ) : (
           <Typography
             variant='h3'
-            sx={{
-              marginX: '40%',
-              marginTop: 10,
-            }}
+            align='center'
+            color='text.secondary'
+            className='no-match'
+            marginLeft={70}
+            marginTop={10}
           >
             No Match
           </Typography>
